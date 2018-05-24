@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home02-1</title>
+	<style>
+		body{ margin : 0; }
+		.nav{
+			width      : 100%;
+			height     : 80px;
+			border     : 1px solid red;
+			position   : fixed;
+			background : #ffffff;
+		}
+		.nav > .up, .nav > .down{
+			width    : 100%;
+			height   : 100%;
+			position : absolute;
+		}
+		.nav > .up{ background : #b1b5ff; opacity : 0.5; }
+		.nav > .down{ background : #60ff47; top : 100%; opacity : 0.5; }
+	</style>
+
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div class="nav">
+		<div class="up"></div>
+		<div class="down"></div>
+	</div>
+	<div style="height: 2000px;background: #ccc;"></div>
+
+	<script>
+	let MAX = 50;
+	let $nav = $( ".nav" );
+
+	$( window ).on( "scroll wheel", scrollHandler );
+	$nav.data( "flag", "up" );
+
+	function scrollHandler( event )
+	{
+		auto();
+	}
+
+	function auto()
+	{
+		let st = $( this ).scrollTop();
+		let flag = $nav.data( "flag" );
+
+		if( event.type === "wheel" )
+		{
+
+			if( st < MAX ) return;
+
+			if( event.deltaY > 0 )
+			{
+				down();
+			}
+			else
+			{
+				up();
+			}
+		}
+		else
+		{
+			if( flag === "up" && st > MAX )
+			{
+				down();
+			}
+			else if( flag === "down" && st <= MAX )
+			{
+				up();
+			}
+		}
+	}
+
+	function up()
+	{
+		$nav.data( "flag", "up" );
+		console.log( "wheel", "显示第一屏" );
+		// 显示第一屏
+		$nav.find( ".up" ).stop().animate( { top: 0 }, 200 );
+		$nav.find( ".down" ).stop().animate( { top: "100%" }, 200 );
+	}
+
+	function down()
+	{
+		$nav.data( "flag", "down" );
+
+		// 显示第二屏
+		$nav.find( ".up" ).stop().animate( { top: "-100%" }, 200 );
+		$nav.find( ".down" ).stop().animate( { top: 0 }, 200 );
+	}
+	</script>
+</body>
+</html>

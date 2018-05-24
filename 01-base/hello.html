@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hello</title>
+	<script src="jquery-v1.12.4.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+	<script>
+	console.log( $( window ).width(), window.innerWidth );
+
+	$( document ).ready( function()
+	{
+		// 代码。。。
+		$( "button" ).click( function()
+		{
+			alert( "Hello jQuery!" );
+		} );
+	} );
+
+	</script>
+</head>
+<body>
+	<button>点击提示</button>
+	<button>点击提示</button>
+	<button>点击提示</button>
+	<button disabled>点击提示</button>
+	<input type="text" placeholder="" disabled>
+	<select disabled>
+		<option value="1">1</option>
+	</select>
+
+	<script>
+
+	</script>
+</body>
+</html>

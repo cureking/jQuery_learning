@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>extend</title>
+	<script src="js/jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<script>
+	let _default = { name: "Tom", age: 21 };
+
+	let result = $.extend(
+		//{},// 用空对象来替代
+		_default,
+		{ name: "Jerry", sex: "Boy" }
+	);
+
+	$.extend( {
+		PI: 3.1415926,
+		isEmpty: function( value )
+		{
+			return value === "" || value === null || value === undefined;
+		},
+		isNumeric: function( value )
+		{
+			console.log( "isNumeric..." );
+			return typeof value === "number";
+		}
+	} );
+
+	console.log( $.PI, $.isNumeric( "0" ), $.isNumeric( 0 ) );
+
+	function sum( a, b )
+	{
+		b = $.isEmpty( b ) ? 0 : b;
+		return a + b;
+	}
+	console.log( sum( 1, 1 ) );
+	</script>
+</body>
+</html>

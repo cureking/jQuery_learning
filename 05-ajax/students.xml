@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+	<student>
+		<name>张三</name>
+		<sex>boy</sex>
+		<age>56</age>
+	</student>
+	<student>
+		<name>赵狗</name>
+		<sex>girl</sex>
+		<age>98</age>
+	</student>
+</students>

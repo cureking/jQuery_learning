@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>筛选器</title>
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<ul>
+		<li>列表项-01</li>
+		<li>列表项-02</li>
+		<li>列表项-03</li>
+		<li>列表项-04</li>
+		<li>列表项-05</li>
+	</ul>
+	<script>
+	let $lis = $( "li" );
+
+	console.log( $( "li:first" ) );
+	console.log( $lis.first() );
+
+	console.log( "even:", $( "li:even" ) );
+	console.log( "even:", $lis.parent().find( ":even" ) );
+
+	console.log( $( "li:eq(2)" ) );
+	console.log( $lis.eq( 2 ) );
+	</script>
+</body>
+</html>

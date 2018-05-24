@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>baidu</title>
+</head>
+<body>
+	<script src="js/jquery-v1.12.4.js"></script>
+	<script>
+	$.ajax( {
+		url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+		type: 'get',
+		dataType: 'jsonp',
+		data: { "wd": "john" },
+		//jsonp: 'callback',
+		jsonpCallback: 'functionName',
+		success: function( result )
+		{
+			console.log( result );
+		}
+	} );
+
+	window.baidu = {};
+	window.baidu.sug = function( data )
+	{
+		console.log( data );
+	}
+
+	</script>
+</body>
+</html>

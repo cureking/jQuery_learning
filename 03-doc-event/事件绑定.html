@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件绑定</title>
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="inner first">Hello</div>
+		<div class="inner second">And</div>
+		<div class="inner third">Goodbye</div>
+	</div>
+
+	<script>
+	$( '.container' ).on( "dblclick click", ".first", { a: 10 }, function( e )
+	{
+		console.log( e.type, e.data.a, event.timeStamp );
+	} );
+
+	//		$( '.container' ).off( "dblclick", ".first" );
+	//		$( '.container' ).off( "click", ".first" );
+	//		$( '.container' ).off( "dblclick click", ".first" );
+	</script>
+
+</body>
+</html>

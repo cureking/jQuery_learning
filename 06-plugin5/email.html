@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>email</title>
+	<script src="js/jquery-v1.12.4.js"></script>
+	<script src="js/jquery.email.js"></script>
+	<style>
+		#formReg{
+			margin : 100px;
+		}
+		.text-input{
+			padding    : 5px 10px;
+			border     : 1px solid #999999;
+			background : #ffffff;
+			outline    : none;
+		}
+		.text-input:focus{
+			border-color : #cc0000;
+		}
+		.popular{
+			position   : fixed;
+			left       : 100px;
+			top        : 130px;
+			background : #eeeeee;
+			border     : 1px solid #cc0000;
+			box-sizing : border-box;
+			max-height : 250px;
+			overflow   : auto;
+		}
+		.popular ul{
+			list-style : none;
+			margin     : 0;
+			padding    : 0;
+		}
+		.popular ul li{
+			font-size : 14px;
+			padding   : 5px 10px;
+			cursor    : pointer;
+		}
+		.popular ul li:hover{
+			background : rgba(255, 255, 255, 0.8);
+		}
+	</style>
+</head>
+<body>
+	<form id="formReg">
+		<input type="text" id="email" class="text-input" placeholder="" data-email="true">
+		<input type="text" id="email2" class="text-input" placeholder="" data-email="true">
+	</form>
+
+	<div class="popular">
+		<ul>
+			<li>xxx1.com</li>
+			<li>xxx2.com</li>
+			<li>xxx3.com</li>
+			<li>xxx4.com</li>
+			<li>xxx5.com</li>
+		</ul>
+	</div>
+</body>
+</html>

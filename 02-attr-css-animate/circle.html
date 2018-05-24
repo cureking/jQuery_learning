@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>方块旋转动画</title>
+	<script src="jquery-v1.12.4.js"></script>
+	<style>
+		div {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: #99cc00;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+		}
+	</style>
+	<script>
+	$( document ).ready( readyHandler );
+
+	function readyHandler()
+	{
+		// 循环创建DIV
+		for( var i = 0; i < 3; i++ )
+		{
+			var r = getRndNum( 200 );
+			var div = createDiv( r, r, "rgb(" + getRndNum( 255 )
+									   + "," + getRndNum( 255 )
+									   + "," + getRndNum( 255 ) + ")" );
+
+			setCenter( div );
+			setRadius( div );
+		}
+
+		// alpha
+		// 开启键盘按键事件
+		$( document ).keydown( keydownHandler );
+	}
+
+	/**
+	 * 设置指定DIV的位置到屏幕中心
+	 * @param div DIV对象（jQuery对象）
+	 */
+	function setCenter( div )
+	{
+		// 取得窗口的宽和高
+		var w = $( window ).width();
+		var h = $( window ).height();
+
+		var dw = div.width();
+		var dh = div.height();
+
+		// 加减乘除这种运算会在位运算之前进行
+		var cx = (w - dw >> 1);
+		var cy = (h - dh >> 1);
+
+		//		var cx = (w - dw ) / 2;
+		//		var cy = (h - dh ) / 2;
+
+		div.css( { "left": cx + "px", "top": cy + "px" } );
+	}
+
+	function setRadius( div )
+	{
+		// 取得窗口的宽和高
+		var w = $( window ).width();
+		var h = $( window ).height();
+
+		// 分析最大半径的范围
+		var max_radius = Math.min( w, h ) >> 1;
+		max_radius -= div.height();
+
+		var step = Math.random() * 15 + 1;
+		var angle = getRndNum( 360 );
+		var radius = getRndNum( max_radius, 50 );
+		var x = w >> 1;
+		var y = h >> 1;
+		var np = getPoint( x, y, radius, angle );
+		np.left -= div.height() >> 1;
+		np.top -= div.height() >> 1;
+
+		div.data( "datas", { x: x, y: y, radius: radius, angle: angle, step: step } );
+
+		div.animate( np, 1000, function()
+		{
+			start( div );
+		} );
+	}
+
+	function start( div )
+	{
+		var d = div.data( "datas" );
+		d.angle = d.angle + d.step;
+		var np = getPoint( d.x, d.y, d.radius, d.angle );
+		np.left -= div.height() >> 1;
+		np.top -= div.height() >> 1;
+
+		div.data( "datas", d );
+		div.animate( np, 30, function()
+		{
+			start( $( this ) );
+		} );
+	}
+
+	/**
+	 * 创建指定大小和背景的DIV
+	 * @param width 宽度
+	 * @param height 高度
+	 * @param backcolor 颜色值
+	 * @param backImage 背景图
+	 */
+	function createDiv( width, height, backcolor, backImage )
+	{
+		var div = $( "<div></div>" ).appendTo( "body" );
+
+		// 设置宽高
+		//div.css( "width", width + "px" );
+		div.width( width );
+		div.height( height );
+
+		// 设置背景
+		if( backImage != undefined )
+		{
+			// 优先设置背景图
+			div.css( "background-image", backImage );
+		}
+		else
+		{
+			// 没有图片才设置背景颜色
+			div.css( "background-color", backcolor );
+		}
+
+		return div;
+	}
+
+	function keydownHandler( event )
+	{
+		if( event.which == 74 )// J
+		{
+			// 按下J的时候，让屏幕上这3个DIV中的任何一个
+			// div 是jQuery对象，可以直接引用jQuery的方法
+			var div = $( "div" ).eq( getRndNum( $( "div" ).length ) );
+
+			// 取得窗口的宽和高
+			var w = $( window ).width();
+			var h = $( window ).height();
+
+			var left = getRndNum( w - div.width() );
+			var top = getRndNum( h - div.height() );
+
+			// 飞过去
+			div.stop().animate( {
+				left: left,
+				top: top
+			}, 500 );
+		}
+	}
+
+	/**
+	 * 获取指点圆心坐标、半径的圆，指定角度上的圆上的坐标
+	 * @param x
+	 * @param y
+	 * @param radius
+	 * @param angle
+	 * @returns {{left: *, top: *}}
+	 */
+	function getPoint( x, y, radius, angle )
+	{
+		// 角度转换成弧度
+		var radian = angle * Math.PI / 180;
+
+		// 返回指定角度的从圆心的射线和圆弧上交点坐标
+		return {
+			left: x + Math.cos( radian ) * radius,
+			top: y + Math.sin( radian ) * radius
+		};
+	}
+
+	// 0-255
+	// 取得0-max，包括max在内的随机数
+	function getRndNum( max, min )
+	{
+		if( typeof(min) == typeof(void(0)) )min = 0;
+		return Math.random() * max + min >> 0;
+	}
+	</script>
+</head>
+<body>
+</body>
+</html>

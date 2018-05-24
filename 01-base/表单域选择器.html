@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单域选择器</title>
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div class="div_border">
+		<label>性别</label>
+
+		<div class="items">
+			<label><input type="radio" name="sex_group" value="男">男</label>
+			<label><input type="radio" name="sex_group" value="女">女</label>
+		</div>
+	</div>
+
+	<div class="div_border">
+		<label>兴趣爱好</label>
+
+		<div class="items" id="hobby">
+			<label><input type="checkbox" value="读书">读书</label>
+			<label><input type="checkbox" value="运动">运动</label>
+			<label><input type="checkbox" value="吃喝">吃喝</label>
+			<label><input type="checkbox" value="编程">编程</label>
+			<label><input type="checkbox" value="书法">书法</label>
+		</div>
+	</div>
+
+	<script>
+	$( window ).keyup( function()
+	{
+		let sex = $( ":radio[name=sex_group]:checked" ).val();
+		console.log( sex );
+
+		let hobby = [];
+		let $hobby = $( "#hobby" );
+		$hobby.find( ":checkbox:checked" )
+			.each( function( index, element )
+			{
+				//console.log( index, this === element );
+				console.log( index, this.value, element.value, $( this ).val() );
+				hobby.push( $( this ).val() );
+			} );
+		console.log( hobby );
+	} );
+	</script>
+</body>
+</html>

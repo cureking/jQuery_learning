@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性操作</title>
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div id="container"></div>
+
+	<script>
+	$( "#container" ).attr( "data-api", "abc" ).prop( "data-api", true ).removeProp( "data-api" );
+
+	console.log( $( "#container" ).prop( "data-api" ) );
+	</script>
+</body>
+</html>

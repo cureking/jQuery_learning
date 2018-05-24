@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>替换操作</title>
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="inner first">Hello</div>
+		<div class="inner second">And</div>
+		<div class="inner third">Goodbye</div>
+	</div>
+	<div class="inner f2">Hello2</div>
+	<div class="inner f2">Hello3</div>
+	<script>
+	// jQuery 代码：
+	// $( '.inner' ).replaceWith( "<h2>new el</h2>" );
+	$( '.container .inner' ).replaceWith( $( '.f2' ) );
+	</script>
+</body>
+</html>

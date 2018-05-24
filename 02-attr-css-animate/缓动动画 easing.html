@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>缓动动画 easing</title>
+	<link rel="stylesheet" href="css.css">
+	<script src="jquery-v1.12.4.js"></script>
+	<script src="jquery.easing.js"></script>
+	<style>
+		.block{
+			margin-left : 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="block"></div>
+	<div class="block"></div>
+	<div class="block"></div>
+	<div class="block"></div>
+	<div class="block"></div>
+
+	<div class="block"></div>
+	<div class="block"></div>
+	<div class="block"></div>
+	<div class="block"></div>
+	<div class="block"></div>
+
+	<script>
+	let $bs = $( ".block" );
+	let time = 1000;
+
+	$bs.eq( 0 ).animate( { height: 500 }, time, "easeOutQuad" );
+	$bs.eq( 1 ).animate( { height: 500 }, time, "easeOutCubic" );
+	$bs.eq( 2 ).animate( { height: 500 }, time, "easeOutQuart" );
+	$bs.eq( 3 ).animate( { height: 500 }, time, "easeOutQuint" );
+	$bs.eq( 4 ).animate( { height: 500 }, time, "easeOutSine" );
+	$bs.eq( 5 ).animate( { height: 500 }, time, "easeOutExpo" );
+	$bs.eq( 6 ).animate( { height: 500 }, time, "easeOutCirc" );
+	$bs.eq( 7 ).css( { background: "red" } ).animate( { height: 500 }, time, "easeOutElastic" );
+	$bs.eq( 8 ).animate( { height: 500 }, time, "easeOutBack" );
+	$bs.eq( 9 ).animate( { height: 500 }, time, "easeOutBounce" );
+	</script>
+
+</body>
+</html>

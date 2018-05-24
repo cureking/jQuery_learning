@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json</title>
+
+</head>
+<body>
+	<script>
+	eval( "3+2" );//5
+	let a = eval( "var x=3,y=2;x+y" );
+	console.log( a );
+
+	let json = '{ "name": "张三", "sex": "男" }';
+	console.log( eval( "(" + json + ")" ) );
+
+	console.log( eval( '({"a":10})' ) );
+
+	console.log( "-----------------------------------------------" );
+
+	let obj = JSON.parse( json );
+	console.log( obj );
+	console.log( JSON.stringify( obj ) );
+	</script>
+</body>
+</html>

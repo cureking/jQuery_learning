@@ -1,0 +1,15 @@
+
+.rect{
+	width      : 300px;
+	height     : 200px;
+	background : #b1b5ff;
+	position   : fixed;
+	left       : calc(50% - 150px);
+	top        : calc(50% - 150px);
+}
+.block{
+	width        : 50px;
+	height       : 1px;
+	background   : #7b8dff;
+	float        : left;
+}

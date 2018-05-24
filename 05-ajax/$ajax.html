@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$ajax</title>
+	<style>
+		.app{
+			border  : 5px solid #ccc;
+			padding : 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="app"></div>
+	<script src="js/jquery-v1.12.4.js"></script>
+	<script>
+	//	$.post( "http://127.0.0.1/ajax/reg/json", { abc: 150 }, function( data )
+	//	{
+	//		let content = JSON.parse( data );
+	//		$( ".app" ).text( JSON.stringify( content ) );
+	//		console.log( data );
+	//		console.log( content );
+	//	} );
+	$.ajax( {
+		type: "post",
+		//url: "http://127.0.0.1/ajax/reg/json",
+		url: "http://h5devs.com/h5/a.php",
+		data: { abc: 150 },
+		success: function( data )
+		{
+			//			let content = JSON.parse( data );
+			//			$( ".app" ).text( JSON.stringify( content ) );
+			console.log( data );
+			//			console.log( content );
+		}
+	} );
+	</script>
+</body>
+</html>

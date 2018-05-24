@@ -1,0 +1,14 @@
+
+.tooltip{
+	position         : absolute;
+	background-color : greenyellow;
+	border-radius    : 6px;
+	max-width        : 300px;
+	padding          : 5px 10px;
+}
+.tooltip .top:after{
+	/*transition : 0.2s all;*/
+}
+.tooltip .bottom:after{
+	/*transition : 0.2s all;*/
+}

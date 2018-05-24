@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequest</title>
+</head>
+<body>
+	<script>
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = stateChangeHandler;
+	xhr.open( "get", "students.json" );
+	xhr.setRequestHeader( "abc", "123" );
+	xhr.send();
+
+	function stateChangeHandler( e )
+	{
+		let xhr = e.currentTarget || e.srcElement;
+
+		if( xhr.readyState === 4 && xhr.status === 200 )
+		{
+			console.log( xhr.response );
+			console.log( xhr.responseText );
+			console.log( xhr.responseXML );
+			console.log( JSON.parse( xhr.responseText ) );
+		}
+	}
+
+	</script>
+</body>
+</html>

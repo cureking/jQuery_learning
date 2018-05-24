@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文档操作</title>
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<p>some words!</p>
+
+	<script>
+	let $p = $( "p" );
+
+	$p.append( "<b>Jone said:</b>" );
+	$p.find( "b" ).css( "color", "red" );
+
+	$( "<b>Jone said:</b>" ).appendTo( $p ).css( "color", "red" );
+
+	</script>
+</body>
+</html>

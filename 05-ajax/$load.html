@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>$load</title>
+	<style>
+		.app{
+			border  : 5px solid #ccc;
+			padding : 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="app"></div>
+	<script src="js/jquery-v1.12.4.js"></script>
+	<script>
+	$( ".app" ).load( "http://127.0.0.1/ajax/reg/json", function( data )
+	{
+		console.log( JSON.parse( data ) );
+	} );
+	</script>
+</body>
+</html>

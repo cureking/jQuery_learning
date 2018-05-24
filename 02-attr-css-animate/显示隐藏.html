@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示隐藏</title>
+	<link rel="stylesheet" href="css.css">
+	<script src="jquery-v1.12.4.js"></script>
+
+</head>
+<body>
+	<div class="rect"></div>
+	<button>显示</button>
+	<button>隐藏</button>
+
+	<script>
+	let $btns = $( "button" );
+	let $rect = $( ".rect" );
+
+	$btns.eq( 0 ).click( function( event )
+	{
+		$rect.slideDown( 1000, function()
+		{
+			$( this ).css( { background: "red" } );
+		} );
+	} );
+
+	$btns.eq( 1 ).click( function( event )
+	{
+		$rect.finish().fadeToggle( 100 );
+	} );
+
+	function animate()
+	{
+		$rect.fadeToggle( 1, animate );
+	}
+
+	animate();
+
+	</script>
+</body>
+</html>

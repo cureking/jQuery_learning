@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json</title>
+</head>
+<body>
+	<script>
+	//	var json = '{"a":10}';
+	//
+	//	var o = eval( "(" + json + ")" );
+	//	var o1 = JSON.parse( json );
+	//
+	//	console.log( json, o, o1 );
+	//
+	//	var a = 10;
+	//	a = a << 3;
+	//	a = 10 * 0.5;
+	//	a = 10 >> 1;
+	//
+	//	var b = 10.5;
+	//	//b = b * 0.5;// 5
+	//	console.log( b * 0.5, b >> 1, b >> 0 );
+	//
+	//	var winWidth = 2000;
+	//	var divWidth = 500;
+	//	console.log( winWidth - divWidth >> 1 );
+	//
+	//	var rnd = Math.random() * 100 >> 0;
+	//
+	//	undefined = 100;
+	//
+	//	function multip( a, b )
+	//	{
+	//		if( a === void(0) ) a = 0;
+	//		if( b === void(0) ) b = 0;
+	//
+	//		return a * b;
+	//	}
+	//
+	//	var data = { a: 1, b: 2, c: 3 };
+	//
+	//	for( var property in data )
+	//	{
+	//		console.log( property, data[ property ] );
+	//	}
+	//
+	//	console.log( "10a" - 5 );
+	//	console.log( parseFloat( "1不可能转换成数字" ) - 5 );
+
+	var a = 10 + '';
+	var b = true + '';
+	var c = [];
+	var d = {};
+	var e = function(){};
+
+	c = c.toString();
+	d = d.toString();
+	e = e.toString();
+
+	console.log(a, b, c, d, e);
+
+	</script>
+</body>
+</html>

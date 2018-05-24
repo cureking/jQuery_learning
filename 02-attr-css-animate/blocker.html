@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>方块动画</title>
+	<script src="jquery-v1.12.4.js"></script>
+	<style>
+		div {
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: #99cc00;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+		}
+	</style>
+	<script>
+	$( document ).ready( readyHandler );
+
+	function readyHandler()
+	{
+		// 设置DIV样式和大小
+		//		var div0 = createDiv( 50, 50 );
+		//		var div1 = createDiv( 80, 80 );
+		//		var div2 = createDiv( 100, 100 );
+		//
+		//		div0.css( "background-color", "rgb(" + getRndNum( 255 ) + "," + getRndNum( 255 ) + "," + getRndNum( 255 ) + ")" );
+		//		div1.css( "background-color", "rgb(" + getRndNum( 255 ) + "," + getRndNum( 255 ) + "," + getRndNum( 255 ) + ")" );
+		//		div2.css( "background-color", "rgb(" + getRndNum( 255 ) + "," + getRndNum( 255 ) + "," + getRndNum( 255 ) + ")" );
+		//
+		//		// 先测试一下，它们的颜色是否正常，都是随机又不同
+		//		setCenter( div0 );
+		//		setCenter( div1 );
+		//		setCenter( div2 );
+
+		// 循环创建DIV
+		for( var i = 0; i < 10; i++ )
+		{
+			var r = getRndNum( 200 );
+			var div = createDiv( r, r );
+			div.css( "background-color", "rgb(" + getRndNum( 255 )
+										 + "," + getRndNum( 255 )
+										 + "," + getRndNum( 255 ) + ")" );
+
+			setCenter( div );
+		}
+
+		// alpha
+		// 开启键盘按键事件
+		$( document ).keydown( keyupHandler );
+	}
+
+	/**
+	 * 设置指定DIV的位置到屏幕中心
+	 * @param div DIV对象（jQuery对象）
+	 */
+	function setCenter( div )
+	{
+		// 取得窗口的宽和高
+		var w = $( window ).width();
+		var h = $( window ).height();
+
+		var dw = div.width();
+		var dh = div.height();
+
+		// 加减乘除这种运算会在位运算之前进行
+		var cx = (w - dw >> 1);
+		var cy = (h - dh >> 1);
+
+		//		var cx = (w - dw ) / 2;
+		//		var cy = (h - dh ) / 2;
+
+		div.css( {
+			"left": cx + "px",
+			"top": cy + "px"
+		} );
+	}
+
+	/**
+	 * 创建指定大小和背景的DIV
+	 * @param width 宽度
+	 * @param height 高度
+	 * @param backcolor 颜色值
+	 * @param backImage 背景图
+	 */
+	function createDiv( width, height, backcolor, backImage )
+	{
+		var div = $( "<div></div>" ).appendTo( "body" );
+
+		// 设置宽高
+		//div.css( "width", width + "px" );
+		div.width( width );
+		div.height( height );
+
+		// 设置背景
+		if( backImage != undefined )
+		{
+			// 优先设置背景图
+			div.css( "background-image", backImage );
+		}
+		else
+		{
+			// 没有图片才设置背景颜色
+			div.css( "background-color", backcolor );
+		}
+
+		return div;
+	}
+
+	function keyupHandler( event )
+	{
+		if( event.which == 74 )// J
+		{
+			// 按下J的时候，让屏幕上这3个DIV中的任何一个
+			// div 是jQuery对象，可以直接引用jQuery的方法
+			var div = $( "div" ).eq( getRndNum( $( "div" ).length - 1 ) );
+
+			// 取得窗口的宽和高
+			var w = $( window ).width();
+			var h = $( window ).height();
+
+			var left = getRndNum( w - 1 - div.width() );
+			var top = getRndNum( h - 1 - div.height() );
+
+			// 飞过去
+			div.stop().animate( {
+				left: left,
+				top: top
+			}, 500 );
+		}
+	}
+
+	// 0-255
+	// 取得0-max，包括max在内的随机数
+	function getRndNum( max )
+	{
+		return Math.random() * (max + 1) >> 0;
+	}
+	</script>
+</head>
+<body>
+</body>
+</html>

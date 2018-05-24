@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用户注册</title>
+	<link rel="stylesheet" href="reg.css">
+</head>
+<body>
+	<div id="topic" class="topic">
+		<h2>Hello，我是置顶的标题栏!!!</h2>
+	</div>
+	<div class="container">
+		<form id="form_reg" class="nice" autocomplete="off">
+			<h2>欢迎注册 XXX 新用户：</h2>
+			<fieldset>
+				<input type="text" id="username" class="ipt_border" placeholder="UserName" maxlength="20">
+				<input type="password" id="password" class="ipt_border" placeholder="PassWord" maxlength="20">
+				<input type="password" id="repassword" class="ipt_border" placeholder="Repeat PassWord" maxlength="20">
+			</fieldset>
+
+			<fieldset>
+				<input type="text" id="nickname" class="ipt_border" placeholder="真实姓名">
+
+				<div class="div_border">
+					<label>性别</label>
+
+					<div class="items">
+						<label><input type="radio" name="sex_group" value="男">男</label>
+						<label><input type="radio" name="sex_group" value="女">女</label>
+					</div>
+				</div>
+
+				<!--<input type="text" id="birthday"-->
+				<!--class="ipt_border"-->
+				<!--placeholder="生日日期"-->
+				<!--data-dpformat="Y-m-d"-->
+				<!--data-dpfunc="dateSelected">-->
+
+				<div class="div_border">
+					<label for="birthday">出生日期 </label>
+					<select id="birthday" class="sel_border">
+						<option value="">-- 选择 --</option>
+						<option value="1980">1980</option>
+						<option value="1981">1981</option>
+						<option value="1982">1982</option>
+						<option value="1983">1983</option>
+						<option value="1984">1984</option>
+						<option value="1985">1985</option>
+					</select>
+				</div>
+
+				<input type="text" id="email" class="ipt_border" placeholder="邮箱">
+
+				<div class="div_border">
+					<label>兴趣爱好</label>
+
+					<div class="items" id="hobby">
+						<label><input type="checkbox" value="读书">读书</label>
+						<label><input type="checkbox" value="运动">运动</label>
+						<label><input type="checkbox" value="吃喝">吃喝</label>
+						<label><input type="checkbox" value="编程">编程</label>
+						<label><input type="checkbox" value="书法">书法</label>
+					</div>
+				</div>
+
+			</fieldset>
+
+			<div class="controller">
+				<input type="submit" class="btn" value="提交注册">
+				<input type="reset" class="btn" value="重 置">
+			</div>
+
+		</form>
+	</div>
+	<br><br><br><br>
+	<script>
+	let br = /^[1-9]\d{3}-\d{1,2}-\d{1,2}$/i;
+	</script>
+</body>
+</html>

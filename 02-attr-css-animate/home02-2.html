@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home02-1</title>
+	<style>
+		body{ margin : 0; }
+		.nav{
+			width      : 100%;
+			height     : 80px;
+			border     : 1px solid red;
+			position   : fixed;
+			background : #ffffff;
+		}
+		.nav > .up, .nav > .down{
+			width    : 100%;
+			height   : 100%;
+			position : absolute;
+		}
+		.nav > .up{ background : #b1b5ff; opacity : 0.5; }
+		.nav > .down{ background : #60ff47; top : 100%; opacity : 0.5; }
+	</style>
+
+	<script src="../../../../../前端学习/jQuery课件/02-attr-css-animate/jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div class="nav">
+		<div class="up"></div>
+		<div class="down"></div>
+	</div>
+	<div style="height: 2000px;background: #ccc;"></div>
+
+	<script>
+	let MAX = 200;
+	let $nav = $( ".nav" );
+
+	$( window ).on( "scroll wheel", scrollHandler );
+	$nav.data( { flag: "up", playing: false, scrollTop: 0 } );
+
+	function scrollHandler( event )
+	{
+		let st = $( this ).scrollTop();
+		let flag = $nav.data( "flag" );
+		let target = "";
+		let ost = $nav.data( "scrollTop" );
+		console.log( ost, st );
+
+		if( st <= MAX ) return;
+
+		if( st > ost )
+		{
+			target = "down";
+		}
+		else if( st < ost )
+		{
+			target = "up";
+		}
+		$nav.data( "scrollTop", st );
+
+		if( flag !== target && [ "up", "down" ].indexOf( target ) !== -1 )
+		{
+			target === "down" ? down() : up();
+		}
+	}
+
+	function up()
+	{
+		let playing = $nav.data( "playing" );
+		let flag = $nav.data( "flag" );
+
+		if( !playing && flag === "down" )
+		{
+			// 显示第一屏
+			console.log( "显示第一屏" );
+			$nav.data( "playing", true );
+			$nav.find( ".up" ).stop().animate( { top: 0 }, 200 );
+			$nav.find( ".down" ).stop().animate( { top: "100%" }, 200, function()
+			{
+				$nav.data( "flag", "up" );
+				$nav.data( "playing", false );
+				console.log( "显示第一屏..complete" );
+			} );
+		}
+	}
+
+	function down()
+	{
+		let playing = $nav.data( "playing" );
+		let flag = $nav.data( "flag" );
+
+		if( !playing && flag === "up" )
+		{
+			// 显示第二屏
+			console.log( "显示第二屏" );
+			$nav.data( "playing", true );
+			$nav.find( ".up" ).stop().animate( { top: "-100%" }, 200 );
+			$nav.find( ".down" ).stop().animate( { top: 0 }, 200, function()
+			{
+				$nav.data( "flag", "down" );
+				$nav.data( "playing", false );
+				console.log( "显示第二屏..complete" );
+			} );
+		}
+	}
+	</script>
+</body>
+</html>

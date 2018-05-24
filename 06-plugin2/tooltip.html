@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tooltip</title>
+	<link rel="stylesheet" href="tooltip.css">
+	<style>
+		.app{
+			border  : 5px solid #ccc;
+			padding : 50px;
+		}
+
+	</style>
+</head>
+<body>
+	<div style="height: 500px;"></div>
+	<div class="tooltip">tooltip</div>
+	<div class="app">
+		这是一个<span data-toggle="tooltip" data-content="tooltip工具提示1">Tooltip1</span>插件测试。
+		这是一个<span data-toggle="tooltip" data-content="tooltip工具提示2" data-max-width="50">Tooltip2</span>插件测试。
+		<span id="ttt">Tooltip1</span>
+	</div>
+
+	<div class="tooltip">tooltip工具提示1tooltip工具提示1tooltip工具提示1tooltip工具提示1tooltip工具提示1</div>
+	<script src="js/jquery-v1.12.4.js"></script>
+	<script src="jQuery.tooltip.js"></script>
+	<script>
+	//	let $tp = $( ".tooltip:first" );
+	//	let $dc = $( "[data-toggle='tooltip']:first" );
+	//
+	//	let offset = $dc.offset();
+	//
+	//	let left = offset.left + ($dc.outerWidth() - $tp.outerWidth() >> 1);
+	//	let _top = offset.top - $tp.outerHeight() - 10;
+	//
+	//	console.log( { left: left, top: _top } );
+	//	$tp.offset( { left: left, top: _top } );
+
+	$element = $( "#ttt" );
+	$.tooltip.bind( $element );
+	</script>
+</body>
+</html>

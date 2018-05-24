@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>属性选择器</title>
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div class="first">
+		<p>Hello jQuery!</p>
+	</div>
+	<div class="second">1</div>
+	<div class="second">2</div>
+	<div class="second">3</div>
+	<div class="second">4</div>
+	<div class="second">5</div>
+
+	<input type="hidden" value="123">
+
+	<script>
+	console.log( $( "div[class!=second]", ".first" ) );
+	console.log( $( "div[class*=s]" ) );
+	</script>
+</body>
+</html>

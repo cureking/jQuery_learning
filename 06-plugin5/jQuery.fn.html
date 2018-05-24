@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery.fn</title>
+	<script src="js/jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<script>
+	$.fn.extend( {
+		hello: function()
+		{
+			this.each( function( index, element )
+			{
+				console.log( "hello..." );
+			} );
+
+			return this;
+		}
+	} );
+	$( "div" ).css( { color: "red" } ).hello();
+	</script>
+</body>
+</html>

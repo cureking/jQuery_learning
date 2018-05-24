@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义动画</title>
+	<link rel="stylesheet" href="css.css">
+	<script src="jquery-v1.12.4.js"></script>
+</head>
+<body>
+	<div class="rect" data-test="abc"></div>
+
+	<script>
+	let $rect = $( ".rect" );
+	$rect.offset( { left: 0, top: 0 } );
+	$rect.data( { a: "b" } );
+	console.log( $rect.data( "test" ) );
+
+	$rect.slideUp( 300 ).delay( 800 ).fadeIn( 400 ).animate( {
+		left: $( window ).width() - $rect.width(),
+		top: $( window ).height() - $rect.height()
+	}, 1000 );
+	</script>
+</body>
+</html>
